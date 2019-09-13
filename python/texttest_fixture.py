@@ -28,3 +28,9 @@ if __name__ == "__main__":
                 print(item, file=file)
             print("", file=file)
             GildedRose(items).update_quality()
+
+    with open('GOLDEN_MASTER.txt') as f1, open('Test_Result.txt') as f2, open('difference_to_master.txt', 'w') as outfile:
+        for line1, line2 in zip(f1, f2):
+            if line1 != line2:
+                print(line2, end='', file=outfile)
+
