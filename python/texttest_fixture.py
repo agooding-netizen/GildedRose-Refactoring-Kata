@@ -4,10 +4,9 @@ from __future__ import print_function
 from gilded_rose import *
 
 if __name__ == "__main__":
-    print ("OMGHAI!")
     items = [
              Item(name="+5 Dexterity Vest", sell_in=10, quality=20),
-             Item(name="Aged Brie", sell_in=2, quality=0),
+             Item(name="Aged Brie", sell_in=6, quality=0),
              Item(name="Elixir of the Mongoose", sell_in=5, quality=7),
              Item(name="Sulfuras, Hand of Ragnaros", sell_in=0, quality=80),
              Item(name="Sulfuras, Hand of Ragnaros", sell_in=-1, quality=80),
@@ -17,14 +16,15 @@ if __name__ == "__main__":
              Item(name="Conjured Mana Cake", sell_in=3, quality=6),  # <-- :O
             ]
 
-    days = 2
+    days = 12
     import sys
-    if len(sys.argv) > 1:
-        days = int(sys.argv[1]) + 1
-    for day in range(days):
-        print("-------- day %s --------" % day)
-        print("name, sellIn, quality")
-        for item in items:
-            print(item)
-        print("")
-        GildedRose(items).update_quality()
+    with open("Test_Result.txt", 'w+') as file:
+        if len(sys.argv) > 1:
+            days = int(sys.argv[1]) + 1
+        for day in range(days):
+            print("-------- day %s --------" % day, file=file)
+            print("name, sellIn, quality", file=file)
+            for item in items:
+                print(item, file=file)
+            print("", file=file)
+            GildedRose(items).update_quality()
